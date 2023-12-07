@@ -5,7 +5,7 @@ const output = input.trim()
     .split('\n')
     .map(r=>r.split(' ').map((s,i)=>(s.charCodeAt(0)+i+1)%3))
     .map(([a,b])=>(a===b?3:a===(b+1)%3?0:6)+b+1)
-    .reduce((acc,n)=>(acc+n),0)
+    .reduce((acc,n)=>acc+n)
 
 console.log(output)
 

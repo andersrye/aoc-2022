@@ -1,9 +1,9 @@
 Array.prototype.chunk = function(chunkSize) {
-  return this.reduce((acc, l, i) => {
-      if(i % chunkSize === 0) {
-          acc.push([l])
+  return this.reduce((acc, item, index) => {
+      if(index % chunkSize === 0) {
+          acc.push([item])
       } else {
-          acc[Math.floor(i/chunkSize)].push(l)
+          acc[Math.floor(index/chunkSize)].push(item)
       }
       return acc
   }, [])
@@ -18,5 +18,8 @@ Generator.prototype.map = function* (fn) {
 }
 
 Generator.prototype.reduce = function (fn, acc) {
-    return [...this].reduce(fn, acc)
+    for (const val of this) {
+        acc = fn(acc, val)
+    }
+    return acc
 }

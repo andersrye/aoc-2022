@@ -6,11 +6,10 @@ cycles = File.stream!("./inputs/10.txt")
                 ["addx", num] ->
                   {register_val + String.to_integer(num), [[register_val, register_val] | cycles]}
               end
-         end)
+            end)
          |> elem(1)
          |> Enum.reverse
          |> List.flatten
-         #|> Stream.cycle
 
 #Part 1
 cycles
